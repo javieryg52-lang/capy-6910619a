@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Capyverso</title>
+<meta name="theme-color" content="#151a2e">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Un regalo para Liz">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Capyverso">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=8">
+</head>
+<body class="t-night">
+
+<!-- ============ Iconos (sprite) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-radio" viewBox="0 0 80 66">
+      <path d="M62 16 L74 3" stroke="#5a3820" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="74" cy="3" r="3" fill="#5a3820"/>
+      <rect x="4" y="15" width="72" height="47" rx="11" fill="#c98a55" stroke="#5a3820" stroke-width="3"/>
+      <circle cx="27" cy="39" r="17" fill="#f6e9d0" stroke="#5a3820" stroke-width="3"/>
+      <circle cx="27" cy="39" r="10" fill="none" stroke="#5a3820" stroke-width="2" stroke-dasharray="2 3"/>
+      <circle cx="27" cy="39" r="3.5" fill="#5a3820"/>
+      <rect x="49" y="24" width="21" height="10" rx="3" fill="#f6e9d0" stroke="#5a3820" stroke-width="2"/>
+      <path d="M52 29 h15" stroke="#e08a80" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="55" cy="48" r="5.5" fill="#6e6b2f" stroke="#5a3820" stroke-width="2"/>
+      <circle cx="68" cy="48" r="5.5" fill="#6e6b2f" stroke="#5a3820" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 70 80">
+      <rect x="31" y="46" width="8" height="32" rx="2" fill="#a8683a" stroke="#5a3820" stroke-width="3"/>
+      <path d="M6 46 V30 a29 21 0 0 1 58 0 V46 Z" fill="#7d7a38" stroke="#5a3820" stroke-width="3" stroke-linejoin="round"/>
+      <rect x="52" y="10" width="4" height="22" fill="#5a3820"/>
+      <rect x="52" y="10" width="14" height="10" rx="2" fill="#e08a80" stroke="#5a3820" stroke-width="2"/>
+      <path d="M17 32 h36" stroke="#4e4c22" stroke-width="3" stroke-linecap="round"/>
+      <path d="M26 27 l9 7 l9 -7" fill="#f6e9d0" stroke="#5a3820" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-scope" viewBox="0 0 80 72">
+      <path d="M40 40 L22 68 M40 40 L40 68 M40 40 L58 68" stroke="#5a3820" stroke-width="4" stroke-linecap="round"/>
+      <g transform="rotate(-28 40 34)">
+        <rect x="6" y="26" width="50" height="17" rx="4" fill="#c98a55" stroke="#5a3820" stroke-width="3"/>
+        <rect x="50" y="22" width="16" height="25" rx="4" fill="#6e6b2f" stroke="#5a3820" stroke-width="3"/>
+        <rect x="0" y="29" width="10" height="11" rx="3" fill="#f6e9d0" stroke="#5a3820" stroke-width="3"/>
+      </g>
+      <path d="M68 8 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 l5 -2 z" fill="#f6c56b" stroke="#5a3820" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-tv" viewBox="0 0 80 68">
+      <path d="M26 12 L38 2 L50 12" fill="none" stroke="#5a3820" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="5" y="12" width="70" height="46" rx="9" fill="#c98a55" stroke="#5a3820" stroke-width="3"/>
+      <rect x="11" y="18" width="46" height="34" rx="6" fill="#262a45" stroke="#5a3820" stroke-width="2"/>
+      <path d="M28 27 L28 43 L42 35 Z" fill="#f6e9d0"/>
+      <circle cx="66" cy="27" r="4.5" fill="#6e6b2f" stroke="#5a3820" stroke-width="2"/>
+      <circle cx="66" cy="42" r="4.5" fill="#6e6b2f" stroke="#5a3820" stroke-width="2"/>
+      <path d="M14 58 v6 M66 58 v6" stroke="#5a3820" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cam" viewBox="0 0 76 68">
+      <rect x="4" y="18" width="68" height="44" rx="11" fill="#c98a55" stroke="#5a3820" stroke-width="3"/>
+      <path d="M22 18 l4 -9 h24 l4 9" fill="#a8683a" stroke="#5a3820" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="38" cy="40" r="15" fill="#f6e9d0" stroke="#5a3820" stroke-width="3"/>
+      <circle cx="38" cy="40" r="9" fill="#3a3c5c" stroke="#5a3820" stroke-width="2"/>
+      <circle cx="34" cy="36" r="2.5" fill="#f6e9d0"/>
+      <rect x="10" y="24" width="11" height="6" rx="2" fill="#f6e9d0" stroke="#5a3820" stroke-width="2"/>
+      <circle cx="63" cy="27" r="3" fill="#e08a80" stroke="#5a3820" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-ticket" viewBox="0 0 84 56">
+      <path d="M6 8 h72 a4 4 0 0 1 4 4 v9 a7 7 0 0 0 0 14 v9 a4 4 0 0 1 -4 4 h-72 a4 4 0 0 1 -4 -4 v-9 a7 7 0 0 0 0 -14 v-9 a4 4 0 0 1 4 -4 z" fill="#f6c56b" stroke="#5a3820" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M58 12 v32" stroke="#5a3820" stroke-width="2" stroke-dasharray="3 3"/>
+      <text x="30" y="34" text-anchor="middle" font-family="Fraunces,serif" font-weight="700" font-size="15" fill="#5a3820">VALE</text>
+      <path d="M70 22 c-2 -4 -8 -1 -5 4 l5 5 l5 -5 c3 -5 -3 -8 -5 -4z" fill="#e08a80" stroke="#5a3820" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-sign" viewBox="0 0 76 84">
+      <rect x="34" y="8" width="8" height="74" rx="2" fill="#a8683a" stroke="#5a3820" stroke-width="3"/>
+      <path d="M8 14 h46 l10 9 l-10 9 h-46 z" fill="#c98a55" stroke="#5a3820" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M68 40 h-46 l-10 9 l10 9 h46 z" fill="#7d7a38" stroke="#5a3820" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M17 23 h30" stroke="#f6e9d0" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"/>
+      <path d="M29 49 h30" stroke="#f6e9d0" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"/>
+    </symbol>
+    <symbol id="i-map" viewBox="0 0 84 68">
+      <path d="M6 14 L28 6 L56 14 L78 6 V54 L56 62 L28 54 L6 62 Z" fill="#f6e9d0" stroke="#5a3820" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M28 6 V54 M56 14 V62" stroke="#5a3820" stroke-width="2.5" opacity=".55"/>
+      <path d="M12 44 q10 -14 22 -4 t22 -10" fill="none" stroke="#c0453b" stroke-width="3" stroke-dasharray="1 6" stroke-linecap="round"/>
+      <path d="M62 16 c-7 0 -11 5 -11 10 c0 8 11 18 11 18 s11 -10 11 -18 c0 -5 -4 -10 -11 -10z" fill="#e08a80" stroke="#5a3820" stroke-width="2.5"/>
+      <circle cx="62" cy="26" r="4" fill="#f6e9d0"/>
+    </symbol>
+    <symbol id="i-cake" viewBox="0 0 76 72">
+      <path d="M38 6 c4 5 4 9 0 13 c-4 -4 -4 -8 0 -13z" fill="#ffd25e" stroke="#e08a4a" stroke-width="2"/>
+      <rect x="34" y="18" width="8" height="16" rx="2.5" fill="#f2a6a1" stroke="#5a3820" stroke-width="2.5"/>
+      <path d="M8 40 a6 6 0 0 1 6 -6 H62 a6 6 0 0 1 6 6 v20 a30 6 0 0 1 -60 0z" fill="#c98a55" stroke="#5a3820" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M8 40 a6 6 0 0 1 6 -6 H62 a6 6 0 0 1 6 6 v6 q-6 8 -11 0 q-6 10 -12 0 q-6 8 -12 0 q-6 10 -12 0 q-6 8 -11 0z" fill="#fbf3e4" stroke="#5a3820" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="24" cy="56" r="3" fill="#f2a6a1"/><circle cx="52" cy="56" r="3" fill="#f2a6a1"/>
+    </symbol>
+    <symbol id="i-lock" viewBox="0 0 20 24"><rect x="2" y="10" width="16" height="12" rx="3" fill="currentColor"/><path d="M5 10 V7 a5 5 0 0 1 10 0 V10" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 22"><path d="M12 21 C3 14 1 9 1 6.5 A5.5 5.5 0 0 1 12 5 A5.5 5.5 0 0 1 23 6.5 C23 9 21 14 12 21z" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ Paisaje (fondo del hub y del gate) ============ -->
+<div class="scene" id="scene" aria-hidden="true">
+  <div class="sky"></div>
+  <div class="stars" id="stars"></div>
+  <div class="orb" id="orb"></div>
+  <div class="clouds"><i></i><i></i><i></i></div>
+  <svg class="hills" viewBox="0 0 400 300" preserveAspectRatio="none">
+    <path class="h1" d="M0 120 Q60 70 130 100 T260 90 T400 105 V300 H0Z"/>
+    <path class="h2" d="M0 150 Q80 110 170 138 T330 128 T400 140 V300 H0Z"/>
+    <path class="h3" d="M0 185 Q100 160 200 178 T400 170 V300 H0Z"/>
+  </svg>
+  <div class="pond"><span class="rip r1"></span><span class="rip r2"></span><span class="rip r3"></span><i class="pad p1"></i><i class="pad p2"></i><i class="pad p3"></i></div>
+  <div class="grass"></div>
+  <div class="fireflies" id="fireflies"></div>
+</div>
+
+<!-- ============ Gate: adopción ============ -->
+<main class="gate" id="gate" hidden>
+  <div class="gate-inner">
+    <!-- Paso 1: firmar -->
+    <section class="step" id="stepSign">
+      <div class="sleeper">
+        <img class="sticker breathe" src="assets/capi-left.png" alt="Un capibara dormido con gorro de fiesta">
+        <span class="z z1">z</span><span class="z z2">Z</span><span class="z z3">z</span>
+      </div>
+      <div class="card">
+        <p class="eyebrow">Shhh… está durmiendo</p>
+        <h1>Este capibara busca a su persona</h1>
+        <p class="lead">Lleva un tiempo esperando. Para poder adoptarlo, firma con tu nombre.</p>
+        <form id="signForm" autocomplete="off">
+          <label class="sr" for="signName">Tu nombre</label>
+          <input id="signName" type="text" placeholder="Tu nombre" maxlength="24" autocapitalize="words" enterkeyhint="go">
+          <button class="btn" type="submit">Firmar</button>
+        </form>
+        <p class="hint" id="signHint" role="status" aria-live="polite">&nbsp;</p>
+        <p class="gossip">Aviso: este capibara es chismoso. Le cuenta a Javier lo que escribas, elijas y canjees aquí (tus fotos y tu ubicación no).</p>
+      </div>
+    </section>
+
+    <!-- Paso 2: certificado -->
+    <section class="step" id="stepCert" hidden>
+      <div class="cert">
+        <p class="cert-top">Certificado de adopción</p>
+        <img class="cert-img sticker" src="assets/capi-right.png" alt="">
+        <p class="cert-body">Se hace constar que <b id="certName" class="hand">Liz</b> adopta oficialmente a un capibara de fiesta, con todas sus siestas, su hambre de sandía y su nulo sentido de la puntualidad.</p>
+        <div class="cert-meta">
+          <div><span>Fecha</span><b id="certDate">20 · 09 · 2026</b></div>
+          <div><span>Tutor saliente</span><b class="hand">Javier, «el tonto»</b></div>
+        </div>
+        <div class="stamp" aria-hidden="true">ADOPTADO</div>
+      </div>
+      <div class="card name-card">
+        <p class="lead">Falta lo más importante: ponerle nombre.</p>
+        <form id="nameForm" autocomplete="off">
+          <label class="sr" for="petName">Nombre del capibara</label>
+          <input id="petName" type="text" placeholder="Nombre del capibara" maxlength="16" enterkeyhint="done">
+          <button class="btn" type="submit">Confirmar</button>
+        </form>
+        <div class="chips" id="petChips"></div>
+      </div>
+    </section>
+
+    <!-- Paso 3: video de bienvenida -->
+    <section class="step" id="stepVideo" hidden>
+      <div class="card video-card">
+        <p class="eyebrow" id="videoEyebrow">Han venido a saludarte</p>
+        <div class="vwrap">
+          <video id="welcomeVideo" playsinline preload="metadata" poster="assets/capi-poster.jpg" src="assets/capi.mp4"></video>
+          <button class="vplay" id="welcomePlay" type="button" aria-label="Reproducir video">
+            <svg viewBox="0 0 24 24" width="34" height="34"><path d="M8 5 v14 l11 -7z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <button class="btn" id="enterWorld" type="button">Entrar al Capyverso</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ============ Hub: el mundo capibara ============ -->
+<main class="ui" id="world" hidden>
+  <div class="stage">
+    <header class="top">
+      <div>
+        <h2 class="brand">Capyverso</h2>
+        <p class="sub" id="greeting">Hola, Liz</p>
+      </div>
+      <button class="days" id="daysBtn" type="button" aria-label="Días desde el 20 de julio de 2024">
+        <svg class="ico"><use href="#i-heart"/></svg><b id="daysNum">0</b><span>días</span>
+      </button>
+    </header>
+
+    <button class="obj" style="--x:3%;--y:19%" data-open="sky"><svg class="oi"><use href="#i-scope"/></svg><span class="tag">Cielo</span><i class="dot"></i></button>
+    <button class="obj" style="--x:3%;--y:36%" data-open="radio"><svg class="oi"><use href="#i-radio"/></svg><span class="tag">Radio</span><i class="dot"></i></button>
+    <button class="obj" style="--x:3%;--y:53%" data-open="booth"><svg class="oi"><use href="#i-cam"/></svg><span class="tag">Cabina</span><i class="dot"></i></button>
+    <button class="obj" style="--x:3%;--y:70%" data-open="map"><svg class="oi"><use href="#i-map"/></svg><span class="tag">Mapa</span><i class="dot"></i></button>
+
+    <button class="obj" style="--x:78%;--y:19%" data-open="cine"><svg class="oi"><use href="#i-tv"/></svg><span class="tag">Cine</span><i class="dot"></i></button>
+    <button class="obj" style="--x:78%;--y:36%" data-open="mail"><svg class="oi"><use href="#i-mail"/></svg><span class="tag">Buzón</span><i class="dot"></i></button>
+    <button class="obj" style="--x:78%;--y:53%" data-open="vouchers"><svg class="oi"><use href="#i-ticket"/></svg><span class="tag">Vales</span><i class="dot"></i></button>
+    <button class="obj" style="--x:78%;--y:70%" data-open="cake"><svg class="oi"><use href="#i-cake"/></svg><span class="tag">Pastel</span><i class="dot"></i></button>
+
+    <div class="pet" id="pet">
+      <div class="bubble" id="bubble" role="status" aria-live="polite"></div>
+      <button class="pet-btn" id="petBtn" type="button" aria-label="Tocar al capibara">
+        <img class="sticker pet-img" id="petImg" src="assets/capi-top.png" alt="Capibara con corona y globo">
+      </button>
+      <div class="zzz" id="zzz" hidden><span>z</span><span>Z</span><span>z</span></div>
+    </div>
+
+    <footer class="dock">
+      <div class="mood" id="mood" aria-label="Ánimo del capibara"></div>
+      <div class="acts">
+        <button class="act" id="actPet" type="button">Mimar</button>
+        <button class="act" id="actFeed" type="button">Dar sandía</button>
+        <button class="act ghost" id="actInfo" type="button" aria-label="Información">?</button>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<!-- Overlay confetti -->
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<!-- Sheet modal -->
+<div class="sheet-wrap" id="sheetWrap" hidden>
+  <div class="backdrop" data-close></div>
+  <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <header class="sheet-h">
+      <h3 id="sheetTitle">Título</h3>
+      <button class="x" data-close type="button" aria-label="Cerrar">✕</button>
+    </header>
+    <div class="sheet-b" id="sheetBody"></div>
+  </section>
+</div>
+
+<script src="js/content.js?v=8"></script>
+<script src="js/skydata.js?v=8" defer></script>
+<script src="js/sky.js?v=8" defer></script>
+<script src="js/booth.js?v=8" defer></script>
+<script src="js/map.js?v=8" defer></script>
+<script src="js/cake.js?v=8" defer></script>
+<script src="js/app.js?v=8" defer></script>
+</body>
+</html>
