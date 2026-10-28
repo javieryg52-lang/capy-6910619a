@@ -169,6 +169,14 @@ Abre el telescopio en el mundo capibara: el cielo es el mismo aunque estemos en 
 Y si no alcanza, llámame. Aunque sea para no decir nada.
 
 — J` },
+    { id: "extranar2", title: "Cuando me extrañes (otra vez)", tag: "Ábrela cuando…", after: "extranar", body:
+`Si llegaste hasta aquí y me extrañas, es probable que estemos distanciados, o molestos por algo.
+
+Me conoces: cuando algo me duele, a veces me alejo en vez de hablarlo. No es que deje de quererte. Es que la situación me pesa, y no siempre sé qué hacer con eso aparte de guardarme.
+
+Esta carta no arregla nada por sí sola. Solo quería que supieras eso, aunque estemos en silencio.
+
+— J` },
     { id: "dormir", title: "Cuando no puedas dormir", tag: "Ábrela cuando…", body:
 `Cuenta capibaras, pero no de a uno: de a manada. Con eso ya te dormiste.
 

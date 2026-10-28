@@ -1,5 +1,5 @@
 /* Capyverso · service worker: abre rápido y funciona sin conexión (menos el video y Spotify) */
-const V = 'capyverso-v8';
+const V = 'capyverso-v9';
 const SHELL = ['./', 'index.html', 'css/style.css', 'js/content.js', 'js/skydata.js', 'js/sky.js', 'js/booth.js', 'js/map.js', 'js/cake.js', 'js/app.js',
   'assets/capi-left.png', 'assets/capi-top.png', 'assets/capi-right.png', 'assets/capi-poster.jpg', 'assets/icon-192.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(V).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });

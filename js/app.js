@@ -192,7 +192,8 @@
   });
 
   /* ---------- puntos de novedad ---------- */
-  const availableLetters = () => C.letters.filter(l => !l.unlock || dkey() >= l.unlock);
+  const letterOpen = l => (!l.unlock || dkey() >= l.unlock) && (!l.after || S.letters[l.after]);
+  const availableLetters = () => C.letters.filter(letterOpen);
   function refreshDots() {
     $$('.obj[data-open]').forEach(o => {
       const k = o.dataset.open;
@@ -307,9 +308,8 @@
   function openMail() {
     const render = () => {
       const html = `<p class="note" style="margin:0 2px 12px">Cada día 20 se abre una nueva. Las cerradas esperan su fecha.</p>
-        <div class="env-grid">${C.letters.map(l => {
-          const open = !l.unlock || dkey() >= l.unlock || DEV;
-          const left = l.unlock ? ddiff(dkey(), l.unlock) : 0;
+        <div class="env-grid">${C.letters.filter(l => letterOpen(l) || l.unlock || DEV).map(l => {
+          const open = letterOpen(l) || DEV;
           return `<button class="env ${open ? '' : 'locked'} ${S.letters[l.id] ? 'read' : ''}" data-l="${l.id}" type="button">
             <span class="seal">${open ? '<svg><use href="#i-heart"/></svg>' : '<svg><use href="#i-lock"/></svg>'}</span>
             <small>${esc(l.tag || '')}</small><b>${esc(l.title)}</b>
@@ -324,7 +324,10 @@
       const back = e.target.closest('[data-back]'); if (back) { render(); return; }
       const b = e.target.closest('[data-l]'); if (!b) return;
       const l = C.letters.find(x => x.id === b.dataset.l);
-      if (l.unlock && dkey() < l.unlock && !DEV) { const n = ddiff(dkey(), l.unlock); toast(`Todavía no. Se abre el ${fmtLong(l.unlock)} (faltan ${n} ${n === 1 ? 'día' : 'días'}).`); return; }
+      if (!letterOpen(l) && !DEV) {
+        if (l.unlock && dkey() < l.unlock) { const n = ddiff(dkey(), l.unlock); toast(`Todavía no. Se abre el ${fmtLong(l.unlock)} (faltan ${n} ${n === 1 ? 'día' : 'días'}).`); }
+        return;
+      }
       if (!S.letters[l.id]) notify('Abrió una carta', `«${l.title}»`, ['love_letter']);
       S.letters[l.id] = 1; save(); refreshDots();
       sh.setTitle(l.tag || 'Carta');
