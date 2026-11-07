@@ -14,7 +14,8 @@
   const pick = a => a[Math.floor(Math.random() * a.length)];
 
   /* ---------- estado ---------- */
-  const defaults = () => ({ adopted: false, pet: 'Capi', seen: {}, letters: {}, vouchers: {}, taps: 0, eggs: {}, visits: [], mood: { v: 3, t: Date.now() }, stars: {}, lastDay: '', outbox: [], careDay: '' });
+  const defaults = () => ({ adopted: false, pet: 'Capi', seen: {}, letters: {}, vouchers: {}, taps: 0, eggs: {}, visits: [], mood: { v: 3, t: Date.now() }, stars: {}, lastDay: '', outbox: [],
+    carePetDay: '', careFeedDay: '', careGameDay: '', careCount: { day: '', pet: 0, feed: 0, game: 0 }, careSummarySent: '' });
   if (params.has('reset')) { try { localStorage.removeItem(KEY); } catch {} }
   let S = (() => { try { return Object.assign(defaults(), JSON.parse(localStorage.getItem(KEY) || '{}')); } catch { return defaults(); } })();
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} };
@@ -160,11 +161,33 @@
     }, i * 120);
   }
   function boing() { petBtn.classList.remove('boing'); void petBtn.offsetWidth; petBtn.classList.add('boing'); }
-  function noteCareOnce() {
+  function tallyCare() {
     const today = dkey();
-    if (S.careDay === today) return;
-    S.careDay = today; save();
-    notify(`${S.pet} recibió cariño hoy`, `${cfg.herName} pasó por aquí y le dio cariño.`, ['yellow_heart']);
+    const c = S.careCount || (S.careCount = { day: '', pet: 0, feed: 0, game: 0 });
+    if (c.day && c.day !== today && (c.pet || c.feed || c.game) && S.careSummarySent !== c.day) {
+      const parts = [];
+      if (c.pet) parts.push(`${c.pet} ${c.pet === 1 ? 'mimo' : 'mimos'}`);
+      if (c.feed) parts.push(`${c.feed} ${c.feed === 1 ? 'sandía' : 'sandías'}`);
+      if (c.game) parts.push(`${c.game} ${c.game === 1 ? 'partida jugada' : 'partidas jugadas'}`);
+      const joined = parts.length > 1 ? `${parts.slice(0, -1).join(', ')} y ${parts[parts.length - 1]}` : parts[0];
+      notify(`Resumen del ${fmtLong(c.day)}`, `${S.pet} recibió ${joined}.`, ['bar_chart']);
+      S.careSummarySent = c.day;
+    }
+    if (c.day !== today) S.careCount = { day: today, pet: 0, feed: 0, game: 0 };
+    save();
+  }
+  function noteCareOnce(kind) {
+    const today = dkey();
+    if (S.careCount.day !== today) S.careCount = { day: today, pet: 0, feed: 0, game: 0 };
+    S.careCount[kind === 'feed' ? 'feed' : kind === 'game' ? 'game' : 'pet']++;
+    const key = kind === 'feed' ? 'careFeedDay' : kind === 'game' ? 'careGameDay' : 'carePetDay';
+    if (S[key] !== today) {
+      S[key] = today;
+      if (kind === 'feed') notify(`${S.pet} comió sandía hoy`, `${cfg.herName} le dio sandía.`, ['watermelon']);
+      else if (kind === 'game') notify(`${cfg.herName} jugó hoy`, `Jugó con ${S.pet}.`, ['video_game']);
+      else notify(`${S.pet} recibió mimos hoy`, `${cfg.herName} lo mimó.`, ['yellow_heart']);
+    }
+    save();
   }
   let tapStreak = 0, tapT = 0;
   petBtn.addEventListener('click', () => {
@@ -174,13 +197,13 @@
     showBubble(asleep() ? pick(C.sleepLines) : `${pick(C.tapLines)}`);
   });
   $('#actPet').addEventListener('click', () => {
-    boing(); floatEmoji('💛'); setMood(moodNow() + 1); noteCareOnce();
+    boing(); floatEmoji('💛'); setMood(moodNow() + 1); noteCareOnce('pet');
     showBubble(asleep() ? 'zzz… mmm… gracias… zzz' : pick(['Ay, qué rico. Sigue.', 'Ronroneo de capibara: brrrrr.', 'Mejor día del año. Cada día.', 'Estoy a punto de derretirme.']));
   });
   $('#actFeed').addEventListener('click', () => {
     const r = petBtn.getBoundingClientRect(); const m = document.createElement('span'); m.className = 'melon'; m.textContent = '🍉';
     m.style.left = (r.left + r.width / 2 - 16) + 'px'; m.style.top = (r.top + r.height * .45) + 'px'; document.body.appendChild(m);
-    setTimeout(() => { m.remove(); boing(); floatEmoji('🍉', petBtn, 3); setMood(moodNow() + 2); noteCareOnce(); showBubble(pick(['Ñam ñam ñam. Sin comentarios.', 'La sandía no falla nunca.', 'Esto lo pongo en mi lista de cosas favoritas. Es una lista corta.'])); }, 900);
+    setTimeout(() => { m.remove(); boing(); floatEmoji('🍉', petBtn, 3); setMood(moodNow() + 2); noteCareOnce('feed'); showBubble(pick(['Ñam ñam ñam. Sin comentarios.', 'La sandía no falla nunca.', 'Esto lo pongo en mi lista de cosas favoritas. Es una lista corta.'])); }, 900);
   });
   $('#orb').addEventListener('click', (() => { let n = 0, t = 0; return () => { const x = Date.now(); n = x - t < 1500 ? n + 1 : 1; t = x; if (n === 5) { n = 0; foundEgg('moon', C.eggMoon); } }; })());
 
@@ -220,6 +243,7 @@
     const today = dkey(); const firstToday = S.lastDay !== today;
     if (!S.visits.includes(today)) { S.visits.push(today); }
     S.lastDay = today; save(); refreshDots();
+    tallyCare();
     setTimeout(() => {
       if (first) showBubble(`Soy ${S.pet}. ${C.daily[0]}`, 10000);
       else if (asleep()) showBubble(pick(C.sleepLines));
@@ -414,7 +438,7 @@
   $('#actInfo').addEventListener('click', openInfo);
 
   /* ---------- despacho de objetos ---------- */
-  const ctx = { get S() { return S; }, notify, save, cfg, C, openSheet, closeSheet, toast, confetti, now, hourNow, dkey, norm, esc, waLink, markSeen, DEV, fmtLong };
+  const ctx = { get S() { return S; }, notify, save, cfg, C, openSheet, closeSheet, toast, confetti, now, hourNow, dkey, norm, esc, waLink, markSeen, DEV, fmtLong, bumpMood: n => setMood(moodNow() + n), noteGame: () => noteCareOnce('game') };
   window.Capy = ctx;
   $$('.obj').forEach(o => o.addEventListener('click', () => {
     const k = o.dataset.open;
@@ -427,6 +451,7 @@
     else if (k === 'map') { markSeen('map'); window.openMap && window.openMap(ctx); }
     else if (k === 'cake') { markSeen('cake'); window.openCake && window.openCake(ctx); }
   }));
+  $('#actPlay').addEventListener('click', () => window.openPlay && window.openPlay(ctx));
   document.addEventListener('visibilitychange', () => { if (!document.hidden && !$('#world').hidden) { setTheme(timeClass()); applySleep(); renderMood(); refreshDots(); } });
 
   /* ---------- arranque ---------- */

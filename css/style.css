@@ -353,4 +353,20 @@ textarea:focus{outline:none;border-color:var(--olive);box-shadow:0 0 0 4px rgba(
 .leaflet-tile-pane{filter:sepia(.28) saturate(.9) hue-rotate(-8deg)}
 
 .gossip{margin:.4em 0 0;font-size:.78rem;line-height:1.4;color:#8a7052}
-.grass{background:var(--grass)}
+
+/* dock: hasta 4 botones, que quiebren en pantallas angostas */
+.acts{flex-wrap:wrap;justify-content:center;row-gap:8px}
+
+/* minijuegos */
+.memo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;perspective:600px}
+.memo-card{position:relative;aspect-ratio:1/1;border-radius:12px;background:none}
+.memo-card .back,.memo-card .front{position:absolute;inset:0;display:grid;place-items:center;border-radius:12px;backface-visibility:hidden;transition:transform .35s;font-size:1.5rem;font-weight:800}
+.memo-card .back{background:var(--paper);color:var(--olive);border:2px solid var(--paper-d)}
+.memo-card .front{background:var(--cream);border:2px solid var(--brown-m);transform:rotateY(180deg)}
+.memo-card.up .back{transform:rotateY(180deg)}
+.memo-card.up .front{transform:rotateY(0)}
+.memo-card.matched .front{background:#e3f0d9;border-color:var(--olive)}
+.simon-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:280px;margin:0 auto}
+.simon-pad{aspect-ratio:1/1;border-radius:18px;background:color-mix(in srgb,var(--c) 55%,var(--cream));border:3px solid var(--c);font-size:2rem;box-shadow:0 4px 0 color-mix(in srgb,var(--c) 70%,#000),0 8px 14px rgba(0,0,0,.18);transition:transform .12s,filter .12s}
+.simon-pad.on{transform:scale(.94);filter:brightness(1.3)}
+.simon-pad:active{transform:scale(.96)}

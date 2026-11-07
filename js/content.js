@@ -60,6 +60,15 @@ window.CAPY = {
   // Pastel: velas para soplar (con el micrófono) y deseo sellado hasta el próximo cumpleaños
   cake: { candles: 5, sealUntil: "2027-09-20" },
 
+  // Minijuegos (sección «Jugar»): suben el ánimo.
+  play: {
+    winLines: [
+      "¡Ganamos! Bueno, ganaste tú, yo solo aplaudí.",
+      "Memoria de capibara: inigualable. La tuya tampoco está mal.",
+      "Perfecto. Como nosotros: con más intentos de los necesarios, pero llegamos."
+    ]
+  },
+
   // Retos de la cabina de fotos (uno por foto)
   boothPrompts: [
     "Tu cara de «ya llegó la comida»",
