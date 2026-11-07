@@ -207,6 +207,9 @@
   });
   $('#orb').addEventListener('click', (() => { let n = 0, t = 0; return () => { const x = Date.now(); n = x - t < 1500 ? n + 1 : 1; t = x; if (n === 5) { n = 0; foundEgg('moon', C.eggMoon); } }; })());
 
+  /* ---------- saludo del 20 de cada mes ---------- */
+  const isMonthiversary = () => { const d = now(); return d.getDate() === 20 && d.getMonth() + 1 !== cfg.birthday.month; };
+
   /* ---------- saludo, días, mensaje del día ---------- */
   function greetWord() { const h = hourNow(); return h < 6 ? 'Buenas noches' : h < 12 ? 'Buenos días' : h < 19 ? 'Buenas tardes' : 'Buenas noches'; }
   function dailyMessage() {
@@ -244,14 +247,16 @@
     if (!S.visits.includes(today)) { S.visits.push(today); }
     S.lastDay = today; save(); refreshDots();
     tallyCare();
+    const monthiv = firstToday && isMonthiversary() && !isBirthday();
     setTimeout(() => {
       if (first) showBubble(`Soy ${S.pet}. ${C.daily[0]}`, 10000);
       else if (asleep()) showBubble(pick(C.sleepLines));
+      else if (monthiv) { showBubble(`${C.monthiversary.main} ${C.monthiversary.follow}`, 9000); boing(); floatEmoji('🎉', petBtn, 6); setTimeout(() => floatEmoji('💛', petBtn, 5), 250); setTimeout(() => floatEmoji('🎈', petBtn, 4), 500); }
       else if (firstToday) showBubble(dailyMessage(), 9000);
       else if (moodNow() <= 1) showBubble('Tengo un poquito de hambre… ¿me das sandía?');
       else showBubble(pick(['Volviste. Bien.', 'Hola de nuevo. Iba a echarme una siesta.', 'Justo pensaba en ti… y en sandía.']));
     }, 900);
-    if (first || (isBirthday() && firstToday)) setTimeout(() => confetti(160, .5, .35), 500);
+    if (first || (isBirthday() && firstToday) || monthiv) setTimeout(() => confetti(160, .5, .35), 500);
     clearInterval(ambient);
     ambient = setInterval(() => { if (document.hidden || !$('#sheetWrap').hidden || bubble.classList.contains('show')) return; showBubble(asleep() ? pick(C.sleepLines) : pick(C.tapLines), 4500); }, 45000);
   }

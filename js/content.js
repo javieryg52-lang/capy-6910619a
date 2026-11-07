@@ -69,6 +69,12 @@ window.CAPY = {
     ]
   },
 
+  // Saludo del 20 de cada mes (menos septiembre, que ya tiene su propio festejo de cumpleaños)
+  monthiversary: {
+    main: "Hoy tú y yo cumplimos un mes más de vida.",
+    follow: "Te quiero mucho 😊"
+  },
+
   // Retos de la cabina de fotos (uno por foto)
   boothPrompts: [
     "Tu cara de «ya llegó la comida»",
@@ -208,9 +214,11 @@ Solo pasaba a decirte que sigues siendo mi plan favorito. Que la pases bien hoy.
 
 — J` },
     { id: "nov", title: "El 20 de siempre", tag: "20 de noviembre", unlock: "2026-11-20", body:
-`Otro 20. Ya me estoy acostumbrando a que este número tenga dueña.
+`Hoy se cumple un mes más de varias cosas.
 
-Hoy no hay nada que celebrar en particular. Y por eso mismo escribo: para acordarnos de que se pueden celebrar los días normales, cuando salen bien.
+Los días se van sumando sin pedir permiso. Pasan cosas buenas, pasan cosas que ni vale la pena contar, pasan días comunes y corrientes. Pero hay algo que no se mueve de su sitio pase lo que pase: el cariño sigue ahí, firme.
+
+Que tengas un bonito día, y una bonita semana. Eso es todo lo que quería decirte hoy.
 
 — J` },
     { id: "dic", title: "Navidad de lejos", tag: "20 de diciembre", unlock: "2026-12-20", body:
